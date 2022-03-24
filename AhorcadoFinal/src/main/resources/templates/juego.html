@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{juego.titulo}"/>
+    <link rel="icon" href="data:,"/>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}"/>
+    <script th:src="@{/js/funciones.js}"></script>
+</head>
+
+<div th:replace="fragments/controlJuego :: datos"></div>
+<fieldset class="cajaJuego">
+    <legend class="negrita" th:text="#{juego.leyenda}"/>
+    <form th:action="@{/juego/ahorcado}" method="post">
+        <span class="negrita" th:text="#{juego.adivina}"/>
+        <div class="borde" th:each="letra: ${palabra}">
+            <fieldset class="insertLetra">
+                <span th:text="${letra}"/>
+            </fieldset>
+        </div>
+        <br/>
+        <img th:class="${imagen.get(fallos)}" th:src="@{/img/fondo.png}">
+        <span class="desenlace" th:text="${desenlace}"/>
+        <br/>
+        <br/>
+        <span class="negrita" th:text="#{juego.ingrese}"/>
+        	<input class="caja" type="text" id="letra" name="letra" maxlength="1" />
+        	<!--Si me quedo sin intentos o adivino la palabra, no puedo introducir letras-->
+        <input type="submit" th:value="#{juego.letra}" th:disabled="${palabraSI or fallos eq 0}"/>
+        <br/>
+        
+    </form>
+    <br/>
+    <form id="nuevaPartida" th:action="@{/juego/nuevaPartida}" method="post">
+        <input type="submit" th:value="#{juego.nuevaPartida}"/>
+        <a href="/acceso/logout"><input type="button" th:value="#{juego.desconectar}"/></a>
+    </form>
+</fieldset>
+</body>
+</html>

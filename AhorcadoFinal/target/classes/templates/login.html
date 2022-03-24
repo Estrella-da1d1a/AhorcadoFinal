@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title th:utext="#{login.title}"></title>
+    <link rel="icon" href="data:,"/>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}"/>
+    <script th:src="@{/js/funciones.js}"></script>
+</head>
+<body>
+<div class="titulos" th:text="#{login.titulo}"/>
+<div th:replace="fragments/controlLogin :: datos"></div>
+<fieldset class="cajaLogin">
+    <legend class="negrita" th:text="#{login.leyend}"/>
+    <form th:object="${Usuario}" th:action="@{/acceso/login}" method="post">
+        <label>
+            <span class="rojo negrita">*</span>
+            <span class="negrita" th:text="#{login.usuario}"/>
+            <input type="text" name="usuario" id="usuario" th:field="*{usuario}"/>
+            <span class="rojo negrita" th:each="error: ${#fields.errors('usuario')}" th:text="${error}"/>
+        </label>
+        <br/>
+        <label>
+            <span class="rojo negrita">*</span>
+            <span class="negrita" th:text="#{login.clave}"/>
+            <input type="password" name="clave" id="clave" th:field="*{clave}"/>
+            <button type="button" onclick="verClave()"><img th:src="@{/img/ver.png}" width="10" height="10"></button>
+            <span class="rojo negrita" th:each="error: ${#fields.errors('clave')}" th:text="${error}"/>
+        </label>
+        <br/>
+        <span class="rojo negrita" th:text="${otroError}"/>
+        <br/>
+        <input type="submit" th:value="#{login.submit}"/>
+    </form>
+</fieldset>
+</body>
+</html>

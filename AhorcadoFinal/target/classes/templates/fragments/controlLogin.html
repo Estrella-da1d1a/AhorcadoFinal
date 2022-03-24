@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div th:fragment="datos">
+    <fieldset>
+        <legend class="negrita" th:text="#{control.cliente}"/>
+        <span class="negrita" th:text="#{control.ip}"/>
+        <span th:text="${ip}"/>
+        <br/>
+        <span class="negrita" th:text="#{control.MAC}"/>
+        <span th:text="${MAC}"/>
+        <br/>
+        <span class="negrita" th:text="#{control.navegador}"/>
+        <span th:text="${navegador}"/>
+    </fieldset>
+</div>
+</body>
+</html>

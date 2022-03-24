@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div th:fragment="datos" class="colocar">
+    <fieldset class="controlCliente">
+        <legend class="negrita" th:text="#{control.cliente}"/>
+        <span class="negrita" th:text="#{control.ip}"/>
+        <span th:text="${ip}"/>
+        <br/>
+        <span class="negrita" th:text="#{control.MAC}"/>
+        <span th:text="${MAC}"/>
+        <br/>
+        <span class="negrita" th:text="#{control.navegador}"/>
+        <span th:text="${navegador}"/>
+    </fieldset>
+    <fieldset class="controlUsuario">
+        <legend class="negrita" th:text="#{control.usuario}"></legend>
+        <span class="negrita" th:text="${saludo}"/>
+        <span th:text="${ID}"/>
+        <br/>
+        <span class="negrita" th:text="#{control.visitas}"/>  
+        <span th:text="${textoCONT}"/> 
+        <br/>
+        <span class="negrita" th:text="#{control.palabraOculta}"/>
+        <!-- Si he adivinado la palabra o me quedo sin fallos, enseño la palabra oculta-->
+		<span th:if="${palabraSI or fallos eq 0}" class="noNegrita" th:text="${palabraOculta}"/>
+		<!-- ELSE -->
+		<span th:unless="${palabraSI or fallos eq 0}" class="noNegrita" th:text="#{control.palabraNO}"/> 
+        <br/>
+        <span class="negrita" th:text="#{control.ultimaLetra}"/>
+        <span th:text="${ultimaLetra}"/>
+        <br/>
+        <span class="negrita" th:text="#{control.letras}"/>
+        <span id="arrayLetras" th:text="${letras}"/>
+        <br/>
+        <span class="negrita" th:text="#{control.intentos}"/>
+        <span th:text="${intentos}"/>
+        <br/>
+        <span class="negrita" th:text="#{control.fallos}"/>
+        <span th:text="${fallos}"/>
+        <br/>
+    </fieldset>
+</div>
+</body>
+</html>
